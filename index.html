@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+    <script>
+      tailwind.config = {
+        content: ["*"],
+        theme: {
+          container: {
+            center: true,
+            padding: {
+              DEFAULT: "13px",
+              sm: "15px",
+              lg: "20px",
+              xl: "25px",
+            },
+          },
+          extend: {
+            fontFamily: {
+              bebas: ["Bebas Neue", "cursive"],
+              lato: ["Lato", "sans-serif"],
+            },
+            colors: {
+              clifford: "#da373d",
+              blue: "#0B57DB",
+              yellow: "#FFAC2F",
+              lightBlue: "#F0F6FF",
+              skyBlue: "#E7EDFF",
+              lightSkyBlue: "#DEEAFF",
+              lightgray: "#FBFCFF",
+              orange: "#FF6D00",
+              grayBg: "#7F8FA4",
+              dark: "#0D1F39;",
+              darkBlue: "#0E2446;",
+            },
+            maxWidth: {
+              full: "100%",
+            },
+            backgroundColor: {
+              dark: "#0D1F39;",
+              light: "#F8F8F8;",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style type="text/tailwindcss">
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+
+    <title>Firecompass - Alert Details</title>
+  </head>
+
+  <body class="bg-light min-h-screen pb-6" x-data>
+    <!--======== Header Area Start =========-->
+    <header
+      class="header bg-dark sm:py-3.5 py-3 fixed top-0 left-0 w-full z-40"
+    >
+      <div class="container max-w-full flex items-center justify-between">
+        <div
+          class="dropdown group relative hover:bg-darkBlue hover:rounded-b-none"
+        >
+          <div
+            class="flex items-center space-x-2 bg-[#00000033] hover:bg-[#000000b3] group-hover:bg-darkBlue transition border-[1px] border-[#ffffff33] sm:py-[7px] sm:px-[9px] py-1.5 px-2 rounded group-hover:rounded-b-none group-hover:border-b-0"
+          >
+            <img
+              src="assets/img/logos/logo.svg"
+              class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover"
+              alt=""
+            />
+            <div class="sm:flex hidden items-center justify-between">
+              <div
+                class="flex flex-col space-y-[2px] w-[120px] lg:w-[160px] xl:w-[228px]"
+              >
+                <h6 class="text-sm font-bold text-white leading-none">
+                  FIRECOMPASS
+                </h6>
+                <span class="text-xs text-white opacity-[.5] block leading-none"
+                  >Southern India</span
+                >
+              </div>
+              <div
+                class="arrow-down shrink-0 ml-2 cursor-pointer group-hover:opacity-50 group-hover:rotate-180"
+              >
+                <img src="assets/img/icons/arrow-down.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <ul
+            class="dropdown-menu group-hover:block absolute hidden z-10 border-[1px] border-[#ffffff33] border-t-0 w-full left-0 rounded-b overflow-hidden"
+          >
+            <div
+              class="flex items-center space-x-2 bg-darkBlue hover:bg-dark transition sm:py-[8px] sm:px-[9px] py-1.5 px-2"
+            >
+              <img
+                src="assets/img/logos/motorola-logo.svg"
+                class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover"
+                alt=""
+              />
+              <div class="sm:flex hidden items-center justify-between">
+                <div
+                  class="flex flex-col space-y-[2px] w-[120px] lg:w-[160px] xl:w-[228px]"
+                >
+                  <h6
+                    class="text-sm font-bold text-white leading-none uppercase"
+                  >
+                    Motorola, Inc.
+                  </h6>
+                  <span
+                    class="text-xs text-white opacity-[.5] block leading-none"
+                    >Illinois, United States</span
+                  >
+                </div>
+                <div class="arrow-down shrink-0 ml-2 cursor-pointer -rotate-90">
+                  <img src="assets/img/icons/arrow-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex items-center space-x-2 bg-darkBlue hover:bg-dark transition sm:py-[8px] sm:px-[9px] py-1.5 px-2"
+            >
+              <img
+                src="assets/img/logos/motorola-logo.svg"
+                class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover"
+                alt=""
+              />
+              <div class="sm:flex hidden items-center justify-between">
+                <div
+                  class="flex flex-col space-y-[2px] w-[120px] lg:w-[160px] xl:w-[228px]"
+                >
+                  <h6
+                    class="text-sm font-bold text-white leading-none uppercase"
+                  >
+                    Alpine Services Co.
+                  </h6>
+                  <span
+                    class="text-xs text-white opacity-[.5] block leading-none"
+                    >Gaithersburg, India</span
+                  >
+                </div>
+                <div class="arrow-down shrink-0 ml-2 cursor-pointer -rotate-90">
+                  <img src="assets/img/icons/arrow-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex items-center space-x-2 bg-darkBlue hover:bg-dark transition sm:py-[8px] sm:px-[9px] py-1.5 px-2"
+            >
+              <img
+                src="assets/img/logos/buckman-logo.svg"
+                class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover"
+                alt=""
+              />
+              <div class="sm:flex hidden items-center justify-between">
+                <div
+                  class="flex flex-col space-y-[2px] w-[120px] lg:w-[160px] xl:w-[228px]"
+                >
+                  <h6
+                    class="text-sm font-bold text-white leading-none uppercase"
+                  >
+                    Buckman and Co.
+                  </h6>
+                  <span
+                    class="text-xs text-white opacity-[.5] block leading-none"
+                    >Sabillasville, India</span
+                  >
+                </div>
+                <div class="arrow-down shrink-0 ml-2 cursor-pointer -rotate-90">
+                  <img src="assets/img/icons/arrow-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+        <div
+          class="header-right flex items-center space-x-3 sm:space-x-4 lg:space-x-5 xl:space-x-9"
+        >
+          <div class="flex items-center space-x-3">
+            <form
+              action="#"
+              class="search-box relative"
+              x-data="{open : false}"
+              x-on:click.away="open = false"
+            >
+              <button
+                class="bg-[#00000033] hover:bg-[#000000b3] border-[1px] border-[#ffffff33] rounded transition flex items-center justify-center cursor-pointer w-[34px] h-[34px] relative z-20"
+                @click="open = ! open"
+                :class="{'sm:rounded-l-none' : open === true}"
+              >
+                <img src="assets/img/icons/search.svg" alt="" />
+              </button>
+              <input
+                x-show="open"
+                type="text"
+                placeholder="Search"
+                class="rounded transition w-52 lg:w-60 bg-[#0a192e] sm:bg-[#00000033] outline-none text-xs py-2 px-3 text-white h-[34px] absolute -right-24 shadow-md shadow-[#ffffff33] sm:shadow-none sm:right-0 sm:top-0 top-10 z-10 border-[1px] border-[#ffffff33]"
+              />
+            </form>
+
+            <div
+              class="header-data h-[34px] flex items-center justify-between px-3 lg:px-4 py-1 space-x-3 bg-[#00000033] hover:bg-[#000000b3] border-[1px] border-[#ffffff33] rounded transition lg:w-[290px]"
+            >
+              <div
+                class="flex items-center text-[12px] text-white space-x-1 lg:space-x-2"
+              >
+                <span><img src="assets/img/icons/spark.svg" alt="" /></span>
+                <div class="hidden lg:block">31 new vulnerabilities found</div>
+              </div>
+              <i class="text-xs hidden lg:block text-white opacity-[.5]"
+                >3 mins ago</i
+              >
+            </div>
+          </div>
+          <div
+            class="header-buttons flex items-center space-x-[6px] sm:space-x-2"
+          >
+            <button
+              class="bg-[#00000033] rounded-lg transition hover:bg-[#00000080] flex items-center justify-center cursor-pointer w-[34px] h-[34px]"
+            >
+              <img src="assets/img/icons/question-circle.svg" alt="" />
+            </button>
+            <div class="relative" x-data="{ open: false }">
+              <button
+                class="bg-[#00000033] rounded-lg transition hover:bg-[#00000080] flex items-center justify-center cursor-pointer w-[34px] h-[34px]"
+                x-on:click="open =! open"
+              >
+                <img src="assets/img/icons/notification.svg" alt="" />
+              </button>
+              <div x-show="open" x-on:click.away="open = false">
+                <div
+                  class="absolute -right-2 z-10 mt-2 w-64 md:w-64 lg:w-72 xl:w-80 origin-top-right list-none bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none rounded-lg"
+                >
+                  <div class="sort-icon absolute -top-3 right-5">
+                    <img
+                      src="assets/img/icons/sort-white-left-2.svg"
+                      class="rotate-90"
+                      alt=""
+                    />
+                  </div>
+                  <div class="py-1">
+                    <li class="px-4 py-2 flex items-center justify-between">
+                      <h6 class="text-xs font-semibold text-dark">
+                        Notifications
+                      </h6>
+                      <button
+                        class="bg-transparent border-0 p-0 cursor-pointer transition opacity-40 hover:opacity-100"
+                        @click="open = false"
+                      >
+                        <img src="assets/img/icons/close-icon.svg" alt="" />
+                      </button>
+                    </li>
+                    <li
+                      class="px-4 py-2.5 border-t flex items-start justify-start"
+                    >
+                      <span class="flex-shrink-0 w-4 mr-1.5"
+                        ><img src="assets/img/icons/bell-dot.svg" alt=""
+                      /></span>
+                      <div>
+                        <a
+                          href=""
+                          class="block font-medium text-xs text-[#525256] transition hover:text-blue"
+                          >You have new vulnerabilities report</a
+                        >
+                        <div class="flex items-center gap-2 pt-2">
+                          <button
+                            class="bg-blue rounded-3xl text-[10px] font-semibold min-w-[70px] transition text-white py-2 px-3 hover:bg-dark leading-none lg:px-4"
+                          >
+                            Preview Now
+                          </button>
+                          <button
+                            class="bg-[#F0F6FF] rounded-3xl text-[10px] font-semibold transition text-black py-2 px-3 hover:bg-blue hover:text-white leading-none lg:px-4"
+                          >
+                            Not Interested
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="px-4 py-2.5 border-t flex items-start justify-start"
+                    >
+                      <span class="flex-shrink-0 w-4 mr-1.5"
+                        ><img src="assets/img/icons/bell-dot.svg" alt=""
+                      /></span>
+                      <div>
+                        <a
+                          href=""
+                          class="block font-medium text-xs text-[#525256] transition hover:text-blue"
+                          >You have new vulnerabilities report</a
+                        >
+                        <div class="flex items-center gap-2 pt-2">
+                          <button
+                            class="bg-blue rounded-3xl text-[10px] font-semibold transition text-white py-2 px-4 hover:bg-dark leading-none"
+                          >
+                            Allow
+                          </button>
+                          <button
+                            class="bg-[#F0F6FF] rounded-3xl text-[10px] font-semibold transition text-black py-2 px-4 hover:bg-blue hover:text-white leading-none"
+                          >
+                            Reject
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="px-4 py-2.5 border-t flex items-start justify-start"
+                    >
+                      <span class="flex-shrink-0 w-4 mr-1.5"
+                        ><img src="assets/img/icons/bell-dot.svg" alt=""
+                      /></span>
+                      <div>
+                        <a
+                          href=""
+                          class="block font-medium text-xs text-[#525256] transition hover:text-blue"
+                          >You have new vulnerabilities report</a
+                        >
+                        <p class="text-xs text-[#848486] pt-1 font-medium">
+                          <i
+                            >The servers will be unavailable from 1am 23rd July
+                            2022 to 4pm 26th July 2022.</i
+                          >
+                        </p>
+                      </div>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative" x-data="{ open: false }">
+              <button
+                class="bg-[#00000033] rounded-lg transition hover:bg-[#00000080] flex items-center justify-center cursor-pointer w-[34px] h-[34px]"
+                x-on:click="open =! open"
+              >
+                <img src="assets/img/icons/dots.svg" alt="" />
+              </button>
+              <div x-show="open" x-on:click.away="open = false">
+                <div
+                  class="absolute -right-2 z-10 mt-2 w-48 md:w-54 origin-top-right list-none bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none rounded-lg"
+                >
+                  <div class="sort-icon absolute -top-3 right-5">
+                    <img
+                      src="assets/img/icons/sort-white-left-2.svg"
+                      class="rotate-90"
+                      alt=""
+                    />
+                  </div>
+                  <div class="py-1">
+                    <li class="px-4 py-2">
+                      <a
+                        href="#"
+                        class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue"
+                      >
+                        <span class="flex-shrink-0 min-w-[20px] mr-1.5"
+                          ><img src="assets/img/icons/di-1.svg" alt=""
+                        /></span>
+                        Help
+                      </a>
+                    </li>
+                    <li class="px-4 py-2 border-t">
+                      <a
+                        href="#"
+                        class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue"
+                      >
+                        <span class="flex-shrink-0 min-w-[20px] mr-1.5"
+                          ><img src="assets/img/icons/di-2.svg" alt=""
+                        /></span>
+                        Settings
+                      </a>
+                    </li>
+                    <li
+                      class="px-4 py-2 border-t flex items-center justify-between"
+                    >
+                      <a
+                        href="#"
+                        class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue"
+                      >
+                        <span class="flex-shrink-0 min-w-[20px] mr-1.5"
+                          ><img src="assets/img/icons/di-3.svg" alt=""
+                        /></span>
+                        Light Mode
+                      </a>
+                      <label
+                        class="relative inline-flex items-center cursor-pointer ms-1"
+                      >
+                        <input type="checkbox" value="" class="sr-only peer" />
+                        <div
+                          class="w-6 h-3.5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-2.5 after:w-2.5 after:transition-all dark:border-gray peer-checked:bg-blue"
+                        ></div>
+                      </label>
+                    </li>
+                    <li class="px-4 py-2 border-t">
+                      <a
+                        href="#"
+                        class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue"
+                      >
+                        <span class="flex-shrink-0 min-w-[20px] mr-1.5"
+                          ><img src="assets/img/icons/di-4.svg" alt=""
+                        /></span>
+                        Log Out
+                      </a>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="sidebarOpen"
+            @click="$refs.sidebar.classList.add('show')"
+            class="sidebar-open block lg:hidden text-white text-lg transition hover:opacity-[.6] cursor-pointer"
+          >
+            <i class="fas fa-align-right"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--======== Header Area End =========-->
+
+    <!--======== Main Area Start =========-->
+    <main class="main pt-[80px] md:pt-[92px]">
+      <div class="container max-w-full flex gap-5">
+        <!--======== Sidebar Area Start =========-->
+        <aside
+          id="sidebar"
+          x-ref="sidebar"
+          class="sidebar bg-white top-0 overflow-y-auto lg:overflow-visible left-[-100%] lg:z-10 z-50 lg:top-[92px] h-full min-h-[92vh] fixed lg:sticky flex flex-col justify-between shadow-[#0d1f390f] pl-[12px] xl:pl-[13px] lg:pt-[13px] pt-2 p-[13px] lg:p-[10px] xl:p-[13px] rounded-none lg:rounded-md xl:w-[280px] lg:w-[80px] sm:w-[280px] w-[260px] transition-all shrink-0"
+        >
+          <div>
+            <div class="text-right">
+              <div
+                id="sidebarClose"
+                @click="$refs.sidebar.classList.remove('show')"
+                class="sidebar-close block lg:hidden text-dark text-[24px] cursor-pointer transition hover:text-blue"
+              >
+                <i class="fas fa-times-square"></i>
+              </div>
+            </div>
+            <div
+              id="sidebarToggler"
+              @click="$refs.sidebar.classList.toggle('show')"
+              class="bg-blue w-6 h-6 rounded-full lg:flex items-center justify-center cursor-pointer transition hover:bg-dark p-[5px] shadow-md shadow-indigo-500/50 absolute -right-3 top-3 hidden xl:hidden"
+            >
+              <img
+                class="-rotate-90 max-w-full"
+                src="assets/img/icons/arrow-down.svg"
+                alt=""
+              />
+            </div>
+            <nav class="sidebar-nav pt-1 lg:pt-2 xl:pt-2 px-1 lg:px-0 xl:px-1">
+              <ul class="border-b border-gray-200 pb-3 mb-7">
+                <li class="relative mb-3">
+                  <a
+                    href="index.html"
+                    class="flex items-center xl:text-base text-sm font-semibold text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                  >
+                    <span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-1.svg" alt=""
+                    /></span>
+                    Dashboard</a
+                  >
+                </li>
+                <li class="relative mb-3" x-data="{ open: false }">
+                  <a
+                    href=""
+                    @click.prevent="open =! open"
+                    class="flex items-center xl:text-base lg:text-[0px] text-sm font-medium text-dark opacity-[.4] relative pl-[14px] xl:pl-[14px] xl:pr-4 lg:pr-0 lg:pl-1.5 transition hover:opacity-[1]"
+                    :class="{'opacity-100' : open === true}"
+                    ><span
+                      class="w-9 xl:w-9 lg:w-12 lg:h-12 h-auto xl:h-auto shrink-0 mr-3 xl:mr-3 lg:mr-5 flex items-center justify-center rounded bg-white xl:bg-white"
+                      :class="{'lg:bg-[#F0F6FF]':open === true}"
+                      ><img src="assets/img/icons/nav-icon-2.svg" alt=""
+                    /></span>
+                    Assets</a
+                  >
+                  <span
+                    class="nav-link-badge top-[10px] leading-none py-1 px-2 text-center min-w-[35px] absolute right-0 text-white rounded-full text-xs bg-blue block lg:hidden xl:block"
+                    >13</span
+                  >
+                  <ul
+                    class="m-0 p-0 xl:p-0 list-none pl-6 xl:pl-6 xl:relative xl:left-0 xl:top-0 xl:shadow-none lg:absolute lg:left-20 lg:w-40 lg:shadow lg:-top-2 bg-white lg:p-3 lg:pt-2 lg:pb-4 rounded"
+                    x-show="open"
+                    @click.away="open = false"
+                  >
+                    <div class="sort-left absolute -left-2 top-5">
+                      <img src="assets/img/icons/sort-white-left.svg" alt="" />
+                    </div>
+                    <li class="py-1.5 px-2 pt-3">
+                      <a
+                        href=""
+                        class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"
+                        ><span class="flex-shrink-0 mr-2 relative top-[1px]"
+                          ><img src="assets/img/icons/sort-right.svg" alt=""
+                        /></span>
+                        Domains</a
+                      >
+                    </li>
+                    <li class="py-1.5 px-2">
+                      <a
+                        href=""
+                        class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"
+                        ><span class="flex-shrink-0 mr-2 relative top-[1px]"
+                          ><img src="assets/img/icons/sort-right.svg" alt=""
+                        /></span>
+                        Subdomains</a
+                      >
+                    </li>
+                    <li class="py-1.5 px-2">
+                      <a
+                        href=""
+                        class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"
+                        ><span class="flex-shrink-0 mr-2 relative top-[1px]"
+                          ><img src="assets/img/icons/sort-right.svg" alt=""
+                        /></span>
+                        IPs</a
+                      >
+                    </li>
+                    <li class="py-1.5 px-2">
+                      <a
+                        href=""
+                        class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"
+                        ><span class="flex-shrink-0 mr-2 relative top-[1px]"
+                          ><img src="assets/img/icons/sort-right.svg" alt=""
+                        /></span>
+                        Services</a
+                      >
+                    </li>
+                    <li class="py-1.5 px-2">
+                      <a
+                        href=""
+                        class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"
+                        ><span class="flex-shrink-0 mr-2 relative top-[1px]"
+                          ><img src="assets/img/icons/sort-right.svg" alt=""
+                        /></span>
+                        Mobile apps</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="relative mb-3">
+                  <a
+                    href=""
+                    class="flex items-center xl:text-base text-sm font-medium text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                    ><span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-3.svg" alt=""
+                    /></span>
+                    Exposures
+                  </a>
+                </li>
+                <li class="relative mb-3">
+                  <a
+                    href=""
+                    class="flex items-center font-medium text-dark xl:text-base text-sm opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                    ><span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-4.svg" alt=""
+                    /></span>
+                    Reports
+                  </a>
+                </li>
+              </ul>
+              <ul class="border-b border-gray-200 pb-3 mb-2">
+                <li class="relative mb-3">
+                  <a
+                    href=""
+                    class="flex items-center font-medium xl:text-base text-sm text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                  >
+                    <span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-5.svg" alt=""
+                    /></span>
+                    Playbook</a
+                  >
+                </li>
+                <li class="relative mb-3">
+                  <a
+                    href=""
+                    class="flex items-center font-medium xl:text-base text-sm text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                    ><span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-6.svg" alt=""
+                    /></span>
+                    Campaigns
+                  </a>
+                  <span
+                    class="nav-link-badge top-[23%] leading-none py-1 px-2 text-center min-w-[35px] absolute right-0 text-white rounded-full text-xs bg-yellow block lg:hidden xl:block"
+                    >New</span
+                  >
+                </li>
+              </ul>
+              <ul class="pb-3 mb-2">
+                <li class="relative mb-3">
+                  <a
+                    href=""
+                    class="flex items-center font-medium xl:text-base text-sm text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                  >
+                    <span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-7.svg" alt=""
+                    /></span>
+                    Settings</a
+                  >
+                </li>
+                <li class="relative mb-3">
+                  <a
+                    href=""
+                    class="flex items-center font-medium xl:text-base text-sm text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                    ><span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-8.svg" alt=""
+                    /></span>
+                    Activity log
+                  </a>
+                </li>
+                <li class="relative mb-3">
+                  <a
+                    href="alerts-setup.html"
+                    class="flex items-center font-medium xl:text-base text-sm text-dark opacity-[1] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"
+                    ><span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"
+                      ><img src="assets/img/icons/nav-icon-9.svg" alt=""
+                    /></span>
+                    Alert Center
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div
+            class="sidebar-help bg-[#EEF4FF] text-center p-4 rounded-lg mt-8"
+          >
+            <div
+              class="sidebar-help-icon mb-6 w-16 h-16 bg-white mx-auto -mt-12 rounded-full flex items-center justify-center"
+            >
+              <img src="assets/img/icons/question-mark.svg" alt="" />
+            </div>
+            <h5 class="font-semibold text-dark mb-3 text-lg">Help center</h5>
+            <p class="text-sm max-w-[206px] mx-auto mb-8 opacity-[.4]">
+              Etiam porta sem malesuada magna mollis euismod.
+            </p>
+            <a
+              href=""
+              class="flex items-center py-3 px-3 leading-1 rounded-full bg-blue text-white transition text-sm font-medium hover:bg-dark hover:text-white justify-center"
+              >Go to help center</a
+            >
+          </div>
+        </aside>
+        <!--======== Sidebar Area End =========-->
+
+        <!--======== Dahsboard Area Start =========-->
+        <section class="dashboard-area w-full">
+          <div
+            class="page-title md:flex-row space-y-3 flex-col md:space-y-0 flex items-start sm:items-center justify-between sm:pb-6 pb-4"
+          >
+            <ul class="flex items-center space-x-2 flex-wrap sm:pt-4 md:pt-0">
+              <li>
+                <a href=""
+                  ><b
+                    class="text-dark lg:text-lg sm:text-base text-sm leading-normal"
+                    >Dashboard</b
+                  >
+                  <i
+                    class="fas ml-1 text-[#8A8A8A] sm:text-base text-sm fa-angle-right"
+                  ></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="alerts-setup.html"
+                  class="text-[#3D3D3D] font-medium sm:text-base text-sm leading-normal"
+                >
+                  Domains
+                </a>
+              </li>
+            </ul>
+            <div
+              class="text-center flex items-center w-full sm:w-auto gap-2 flex-wrap"
+            >
+              <a
+                href=""
+                class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"
+                ><span
+                  ><img class="mr-1" src="assets/img/icons/support.svg" alt=""
+                /></span>
+                Raise a ticket</a
+              >
+              <a
+                href=""
+                class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"
+                ><span
+                  ><img class="mr-1" src="assets/img/icons/Correct.svg" alt=""
+                /></span>
+                Mark verified</a
+              >
+              <a
+                href=""
+                class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"
+                ><span
+                  ><img class="mr-1" src="assets/img/icons/archive.svg" alt=""
+                /></span>
+                Mute</a
+              >
+              <a
+                href=""
+                class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"
+                ><span
+                  ><img
+                    class="mr-1"
+                    src="assets/img/icons/trash-red.svg"
+                    alt=""
+                /></span>
+                Close</a
+              >
+            </div>
+          </div>
+
+          <!-- domain active part start  -->
+          <div
+            class="flex flex-col md:flex-row md:items-center items-start md:justify-between justify-start pr-6 pl-4 pt-[11px] pb-[22px] bg-white rounded-lg"
+          >
+            <div class="flex flex-col justify-start">
+              <span
+                class="text-[14px] text-[#0A5AE3] tracking-[0.14px] font-medium not-italic leading-8"
+                >Domain
+              </span>
+
+              <div class="flex items-center space-x-3 flex-wrap">
+                <h2
+                  class="text-[#010101] sm:text-4xl text-3xl leading-[31px] not-italic font-medium"
+                >
+                  adobesystems.com
+                </h2>
+                <span
+                  class="py-[3px] px-[7px] bg-[#87C377] text-white rounded text-xs font-medium leading-[15px]"
+                  >Active</span
+                >
+                <img src="assets/img/image-info.png" alt="" class="w-7 h-7" />
+              </div>
+            </div>
+
+            <div class="flex flex-col justify-start">
+              <span
+                class="text-[14px] text-[#0A5AE3] tracking-[0.14px] font-medium not-italic leading-8"
+                >Location</span
+              >
+              <div class="flex items-center space-x-[9px]">
+                <p>Chon Buri</p>
+                <img src="assets/img/location.png" alt="" class="w-5 h-5" />
+              </div>
+            </div>
+          </div>
+          <!-- domain active part end  -->
+
+          <!-- chart flex part start -->
+          <div
+            class="flex md:flex-row flex-col md:space-y-0 space-y-[17px] md:space-x-[17px] mt-3"
+          >
+            <!-- left div part -->
+            <div class="md:w-1/2 w-full bg-white rounded-[10px] px-[21px] py-4">
+              <!-- 1st row  -->
+              <div class="flex justify-between space-x-3">
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Status
+                  </p>
+                  <span
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                    >New</span
+                  >
+                </div>
+
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Validation status
+                  </p>
+                  <div class="flex items-center space-x-4">
+                    <p
+                      class="text-[#010101] font-medium text-base leading-8 not-italic"
+                    >
+                      Validated
+                    </p>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M0 10C0 4.5 4.5 0 10 0C15.5 0 20 4.5 20 10C20 15.5 15.5 20 10 20C4.5 20 0 15.5 0 10ZM9.4 13.1L14.2 8.3C14.6 7.9 14.6 7.3 14.2 6.9C13.8 6.5 13.2 6.5 12.8 6.9L8.7 11L7.2 9.5C6.8 9.1 6.2 9.1 5.8 9.5C5.4 9.9 5.4 10.5 5.8 10.9L8 13.1C8.4 13.5 9 13.5 9.4 13.1Z"
+                        fill="#87C377"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <span class="w-full h-[1px] bg-[#F3EEEE] inline-block"></span>
+
+              <!-- 2nd row -->
+              <div class="flex justify-between space-x-3">
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    First seen
+                  </p>
+                  <span
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                    >10:22 am 11 July 2022</span
+                  >
+                </div>
+
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Last seen
+                  </p>
+
+                  <p
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                  >
+                    10:22 am 11 July 2022
+                  </p>
+                </div>
+              </div>
+
+              <span class="w-full h-[1px] bg-[#F3EEEE] inline-block"></span>
+
+              <!-- 3rd row -->
+              <div class="flex justify-between space-x-3">
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Associated business unit
+                  </p>
+                  <span
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                    >North-west region</span
+                  >
+                </div>
+
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Configured netblock
+                  </p>
+
+                  <p
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                  >
+                    203.170.171.0/24
+                  </p>
+                </div>
+              </div>
+
+              <span class="w-full h-[1px] bg-[#F3EEEE] inline-block"></span>
+
+              <!-- 4th row -->
+              <div class="flex justify-between space-x-3">
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Technologies
+                  </p>
+                  <span
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                    >C++, Java, ASP.net +5</span
+                  >
+                </div>
+
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Services
+                  </p>
+
+                  <p
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                  >
+                    Service 1, Service 2 +3
+                  </p>
+                </div>
+              </div>
+
+              <span class="w-full h-[1px] bg-[#F3EEEE] inline-block"></span>
+
+              <!-- 5th row -->
+              <div class="flex justify-between space-x-3">
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Ports
+                  </p>
+                  <span
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                    >15</span
+                  >
+                </div>
+
+                <div class="w-1/2">
+                  <p
+                    class="text-[14px] text-[#93989A] font-medium not-italic leading-8 tracking-[0.14px]"
+                  >
+                    Domains
+                  </p>
+
+                  <p
+                    class="text-[#010101] font-medium text-base leading-8 not-italic"
+                  >
+                    15
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- right part div start  -->
+            <div class="md:w-1/2 w-full bg-white rounded-[10px] px-[25px] py-5">
+              <div>
+                <p
+                  class="text-[#181F2E] not-italic font-semibold text-base leading-[19px] mb-3"
+                >
+                  Exposure score 7/10
+                </p>
+              </div>
+
+              <div class="relative mb-[22px]">
+                <div
+                  class="overflow-hidden h-[10px] flex rounded-lg bg-[#EFF1F4]"
+                >
+                  <div
+                    class="w-2/3 whitespace-nowrap justify-center bg-[#0A5AE3] rounded-lg"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- statistics part -->
+              <div
+                class="flex sm:flex-row flex-col items-center justify-between bg-[#F4F6FB] rounded-lg py-[17px] px-[15px] space-y-4"
+              >
+                <div class="flex items-center space-x-[9px]">
+                  <div>
+                    <svg
+                      width="82"
+                      height="82"
+                      viewBox="0 0 82 82"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.7273 6.286C21.3802 5.66082 21.6048 4.87064 22.2406 4.54346C29.2367 0.943406 37.1304 -0.571797 44.9793 0.193587C52.8283 0.958971 60.2805 3.97062 66.4493 8.85442C67.0099 9.29828 67.0777 10.117 66.6164 10.6633L60.6191 17.7657C60.1578 18.312 59.3426 18.3784 58.7763 17.9418C54.4542 14.6098 49.2747 12.554 43.8258 12.0227C38.377 11.4913 32.8978 12.5077 28.0135 14.942C27.3735 15.261 26.5865 15.0384 26.2394 14.4132L21.7273 6.286Z"
+                        fill="#6DA0F7"
+                      />
+                      <path
+                        d="M70.6029 14.5392C71.1361 14.0626 71.9563 14.1072 72.4157 14.6551C75.5933 18.4443 78.0615 22.78 79.6977 27.4542C81.4765 32.536 82.237 37.9185 81.9358 43.2943C81.6345 48.67 80.2773 53.9338 77.9417 58.7851C75.6062 63.6363 72.3379 67.9801 68.3236 71.5683C64.3094 75.1564 59.6276 77.9188 54.5458 79.6977C49.4639 81.4766 44.0815 82.237 38.7057 81.9358C33.3299 81.6345 28.0662 80.2773 23.2149 77.9417C18.7528 75.7935 14.7201 72.8563 11.3097 69.2752C10.8166 68.7574 10.8639 67.9373 11.397 67.4608L18.3276 61.2658C18.8608 60.7893 19.6772 60.8374 20.177 61.3488C22.5427 63.7696 25.3148 65.7618 28.3705 67.2329C31.8155 68.8915 35.5534 69.8552 39.3708 70.0692C43.1882 70.2831 47.0104 69.7431 50.6191 68.4799C54.2278 67.2167 57.5524 65.2551 60.403 62.707C63.2536 60.159 65.5744 57.0744 67.2329 53.6295C68.8915 50.1845 69.8552 46.4466 70.0692 42.6292C70.2831 38.8118 69.7431 34.9896 68.4799 31.3809C67.3594 28.1799 65.6895 25.2026 63.5482 22.5812C63.0958 22.0274 63.1392 21.2107 63.6723 20.7341L70.6029 14.5392Z"
+                        fill="#DEEAFF"
+                      />
+                      <path
+                        d="M8.69883 64.0899C8.11711 64.5057 7.30659 64.3723 6.90933 63.7778C4.16201 59.666 2.17918 55.0879 1.06024 50.2637C-0.156282 45.0187 -0.327821 39.5855 0.55542 34.2742C1.43866 28.963 3.35938 23.8777 6.20792 19.3087C8.82795 15.1063 12.1857 11.4163 16.1159 8.41498C16.6842 7.98099 17.4943 8.1171 17.9101 8.69883L23.3159 16.2611C23.7317 16.8428 23.5952 17.6493 23.0326 18.0905C20.3692 20.1794 18.0878 22.7188 16.2936 25.5967C14.2708 28.8412 12.9068 32.4523 12.2796 36.2239C11.6524 39.9955 11.7742 43.8538 12.6381 47.5783C13.4044 50.882 14.7411 54.0231 16.5851 56.8615C16.9747 57.4611 16.8428 58.2683 16.2611 58.6841L8.69883 64.0899Z"
+                        fill="#0A5AE3"
+                      />
+                      <circle
+                        cx="41.3475"
+                        cy="41.3485"
+                        r="16.3305"
+                        fill="#DEEAFF"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="space-y-[5px]">
+                    <span
+                      class="font-semibold text-3xl leading-[26px] text-[#0A5AE3]"
+                      >93</span
+                    >
+                    <p
+                      class="font-medium tracking-[-0.01em] text-[12px] text-[#848486]"
+                    >
+                      Vulnerabilities
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col space-y-[13px]">
+                  <div class="flex items-center justify-between space-x-[15px]">
+                    <p
+                      class="font-medium text-base leading-[19px] tracking-[-0.01em] text-[#848486]"
+                    >
+                      High
+                    </p>
+                    <div
+                      class="bg-red-500 bg-opacity-10 rounded px-[5px] py-[3px]"
+                    >
+                      <span
+                        class="text-[#F36A6A] text-base inline-block font-semibold tracking-[-0.01em] leading-[19px]"
+                        >623</span
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between space-x-[15px]">
+                    <p
+                      class="font-medium text-base leading-[19px] tracking-[-0.01em] text-[#848486]"
+                    >
+                      Medium
+                    </p>
+                    <div class="bg-[#FE97051A] rounded px-[5px] py-[3px]">
+                      <span
+                        class="text-[#FE9705] text-base inline-block font-semibold tracking-[-0.01em] leading-[19px]"
+                        >121</span
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between space-x-[15px]">
+                    <p
+                      class="font-medium text-base leading-[19px] tracking-[-0.01em] text-[#848486]"
+                    >
+                      Low
+                    </p>
+                    <div
+                      class="bg-green-500 bg-opacity-10 rounded px-[5px] py-[3px]"
+                    >
+                      <span
+                        class="text-[#87C377] text-base inline-block font-semibold tracking-[-0.01em] leading-[19px]"
+                        >145</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex mt-4">
+                <div class="w-1/2">
+                  <div class="flex items-center space-x-[3px]">
+                    <p class="font-medium text-[11px] leading-8 text-[#93989A]">
+                      Discoverability
+                    </p>
+                    <div>
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M0 5C0 2.23858 2.23858 0 5 0C7.76007 0.00327176 9.99673 2.23993 10 5C10 7.76142 7.76142 10 5 10C2.23858 10 0 7.76142 0 5ZM0.625 5C0.625 7.41625 2.58375 9.375 5 9.375C7.41517 9.37242 9.37242 7.41517 9.375 5C9.375 2.58375 7.41625 0.625 5 0.625C2.58375 0.625 0.625 2.58375 0.625 5Z"
+                          fill="#F36A6A"
+                        />
+                        <path
+                          d="M5 1.875C3.96489 1.87603 3.12603 2.71489 3.125 3.75H3.75C3.75 3.05964 4.30964 2.5 5 2.5C5.62062 2.49939 6.14771 2.95422 6.23795 3.56825C6.32818 4.18228 5.95424 4.76953 5.35969 4.9475C4.9612 5.06345 4.68724 5.42873 4.6875 5.84375V6.875H5.3125V5.84375C5.31371 5.70515 5.40607 5.58391 5.53938 5.54594C6.43064 5.27858 6.99099 4.39804 6.85572 3.47743C6.72046 2.55682 5.9305 1.87468 5 1.875Z"
+                          fill="#F36A6A"
+                        />
+                        <rect
+                          x="4.6875"
+                          y="7.5"
+                          width="0.625"
+                          height="0.625"
+                          fill="#F36A6A"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <span
+                    class="inline-block text-[18px] leading-[22px] text-[#0A5AE3] font-medium"
+                    >06</span
+                  >
+                </div>
+                <div class="w-1/2">
+                  <div class="flex items-center space-x-[3px]">
+                    <p class="font-medium text-[11px] leading-8 text-[#93989A]">
+                      Value to attacker
+                    </p>
+                    <div>
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M0 5C0 2.23858 2.23858 0 5 0C7.76007 0.00327176 9.99673 2.23993 10 5C10 7.76142 7.76142 10 5 10C2.23858 10 0 7.76142 0 5ZM0.625 5C0.625 7.41625 2.58375 9.375 5 9.375C7.41517 9.37242 9.37242 7.41517 9.375 5C9.375 2.58375 7.41625 0.625 5 0.625C2.58375 0.625 0.625 2.58375 0.625 5Z"
+                          fill="#F36A6A"
+                        />
+                        <path
+                          d="M5 1.875C3.96489 1.87603 3.12603 2.71489 3.125 3.75H3.75C3.75 3.05964 4.30964 2.5 5 2.5C5.62062 2.49939 6.14771 2.95422 6.23795 3.56825C6.32818 4.18228 5.95424 4.76953 5.35969 4.9475C4.9612 5.06345 4.68724 5.42873 4.6875 5.84375V6.875H5.3125V5.84375C5.31371 5.70515 5.40607 5.58391 5.53938 5.54594C6.43064 5.27858 6.99099 4.39804 6.85572 3.47743C6.72046 2.55682 5.9305 1.87468 5 1.875Z"
+                          fill="#F36A6A"
+                        />
+                        <rect
+                          x="4.6875"
+                          y="7.5"
+                          width="0.625"
+                          height="0.625"
+                          fill="#F36A6A"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <span
+                    class="inline-block text-[18px] leading-[22px] text-[#0A5AE3] font-medium"
+                  >
+                    9
+                  </span>
+                </div>
+              </div>
+              <span class="w-full h-[1px] bg-[#F3EEEE] inline-block"></span>
+
+              <div>
+                <h2
+                  class="mb-[15px] text-[18px] text-[#181F2E] leading-[22px] capitalize font-semibold"
+                >
+                  Exposures
+                </h2>
+                <div class="">
+                  <div class="flex flex-col space-y-[13px]">
+                    <div
+                      class="flex items-center justify-between space-x-[15px]"
+                    >
+                      <p
+                        class="font-medium text-base leading-[19px] tracking-[-0.01em] text-[#BFC7D1]"
+                      >
+                        Open ports
+                      </p>
+                      <div
+                        class="bg-red-500 bg-opacity-10 rounded px-[5px] py-[3px]"
+                      >
+                        <span
+                          class="text-[#F36A6A] text-base inline-block font-semibold tracking-[-0.01em] leading-[19px]"
+                          >623</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center justify-between space-x-[15px]"
+                    >
+                      <p
+                        class="font-medium text-base leading-[19px] tracking-[-0.01em] text-[#BFC7D1]"
+                      >
+                        Leaked credentials
+                      </p>
+                      <div class="bg-[#FE97051A] rounded px-[5px] py-[3px]">
+                        <span
+                          class="text-[#FE9705] text-base inline-block font-semibold tracking-[-0.01em] leading-[19px]"
+                          >121</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center justify-between space-x-[15px]"
+                    >
+                      <p
+                        class="font-medium text-base leading-[19px] tracking-[-0.01em] text-[#BFC7D1]"
+                      >
+                        Reachable services
+                      </p>
+                      <div
+                        class="bg-green-500 bg-opacity-10 rounded px-[5px] py-[3px]"
+                      >
+                        <span
+                          class="text-[#87C377] text-base inline-block font-semibold tracking-[-0.01em] leading-[19px]"
+                          >145</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- right part div end -->
+          </div>
+          <!-- chart flex part end -->
+
+          <!-- actions chat discovery part start from here  -->
+
+          <!-- tags, action div start  -->
+          <div class="flex flex-col md:flex-row mt-4 gap-x-4 gap-y-4">
+
+            <!-- tags div  -->
+            <div
+              class="bg-white border border-solid border-white shadow-[0px 0px 41px rgba(0, 0, 0, 0.05)] lg:w-1/4 md:w-1/2 w-full px-5 py-5 rounded-[10px]"
+            >
+              <h2
+                class="text-[#181F2E] font-semibold text-base leading-[19px] not-italic pb-4"
+              >
+                Actions
+              </h2>
+
+              <p
+                class="font-medium text-[14px] leading-8 tracking-[0.14px] text-[#93989A]"
+              >
+                In scope for active assessment
+              </p>
+
+              <div class="flex space-x-2 items-center">
+                <span
+                  class="text-[#3D4450] tracking-[0.14px] text-[14px] leading-[17px] font-medium"
+                  >Yes</span
+                >
+                <label
+                  class="relative inline-flex items-center cursor-pointer ms-1"
+                >
+                  <input type="checkbox" value="" class="sr-only peer" />
+                  <div
+                    class="w-12 h-6 bg-[#ECEFF6] peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray peer-checked:bg-blue"
+                  ></div>
+                </label>
+                <span
+                  class="inline-block text-[#A9AFB9] text-[14px] leading-[17px] tracking-[0.14px] font-normal"
+                  >No</span
+                >
+              </div>
+
+              <!-- tags  -->
+
+              <div class="mt-5 mb-[30px]">
+                <p
+                  class="text-[#93989A] leading-8 tracking-[0.14px] font-medium text-[14px] not-italic"
+                >
+                  Tags
+                </p>
+
+                <ul
+                  class="flex space-x-1 items-center flex-wrap md:gap-y-2 gap-y-0"
+                >
+                  <li
+                    class="bg-[#F0F6FF] rounded-xl flex items-center space-x-4 px-[10px] py-[3px] text-[#3D4450] font-medium leading-[17px] text-[14px] tracking-[0.14px]"
+                  >
+                    <a href="#" class="">UAT</a>
+                    <span class="inline-block cursor-pointer">
+                      <i class="fa-solid fa-xmark"></i>
+                    </span>
+                  </li>
+                  <li
+                    class="bg-[#F0F6FF] rounded-xl flex items-center space-x-4 px-[10px] py-[3px] text-[#3D4450] font-medium leading-[17px] text-[14px] tracking-[0.14px]"
+                  >
+                    <a href="#" class="">Another Tag</a>
+                    <span class="inline-block cursor-pointer">
+                      <i class="fa-solid fa-xmark"></i>
+                    </span>
+                  </li>
+                </ul>
+
+                <button
+                  class="bg-[#F0F6FF] rounded py-[7px] px-[13px] text-[#071223] text-[11px] leading-[13px] font-semibold mt-[22px] mb-[30px] cursor-pointer hover:shadow"
+                >
+                  Add a tag
+                </button>
+              </div>
+
+              <div class="inline-block relative w-[6rem]">
+                <select id="select" name="select" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.9201 0.950012L10.4001 7.47001C9.63008 8.24001 8.37008 8.24001 7.60008 7.47001L1.08008 0.950012" stroke="#101010" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        
+                </div>
+                </div>
+
+              <div></div>
+            </div>
+
+            <!-- mmidle part timeline  -->
+            <div
+              class="lg:w-2/4 md:w-1/2 w-full bg-white border border-solid border-white shadow-[0px 0px 41px rgba(0, 0, 0, 0.05)] p-[23px] rounded-[10px]"
+            >
+              <h2
+                class="text-[14px] leading-[17px] text-[#181F2E] font-semibold"
+              >
+                Discovery path of adobesystems.com
+              </h2>
+
+              <div class="flex flex-col space-y-[30px] pb-5 relative">
+                <span class="absolute h-3/4 w-[1px] bg-[#E2E4E8] left-5 top-16"></span>
+                <div class="space-y-[30px] z-10">
+                  <div class="flex space-x-[10px]">
+                    <div class="flex-shrink-0">
+                      <img
+                        src="assets/img/clock.png"
+                        alt=""
+                        class="w-10 h-10"
+                      />
+                    </div>
+                    <p
+                      class="text-[#181F2E] text-[12px] leading-10 font-normal"
+                    >
+                      First detected 5 days ago in
+                      <a href="#" class="cursor-pointer font-bold"
+                        >IP 203.170.171.130.</a
+                      >
+                    </p>
+                  </div>
+                  <div class="flex space-x-[10px]">
+                    <div class="flex-shrink-0">
+                      <img
+                        src="assets/img/clock.png"
+                        alt=""
+                        class="w-10 h-10 "
+                      />
+                    </div>
+                    <p
+                      class="text-[#181F2E] text-[12px] leading-10 font-normal"
+                    >
+                      Also seen in subdomain in
+                      <a href="#" class="cursor-pointer font-bold"
+                        >skldjf.firecompass.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <div class="z-10">
+                  <a
+                    href="#"
+                    class="bg-[#F0F6FF] rounded-xl py-[5px] px-[6px] text-[#071223] tracking-[0.11px] text-center leading-[13px] font-medium text-[11px] inline-block cursor-pointer"
+                    >14 events</a
+                  >
+                </div>
+
+                <div class="space-y-[30px] z-10">
+                  <div class="flex space-x-[10px]">
+                    <div class="flex-shrink-0">
+                      <img
+                        src="assets/img/clock.png"
+                        alt=""
+                        class="w-10 h-10"
+                      />
+                    </div>
+                    <p
+                      class="text-[#181F2E] text-[12px] leading-10 font-normal"
+                    >
+                      Also seen in subdomain in
+                      <a href="#" class="cursor-pointer font-bold"
+                        >skldjf.firecompass.com</a
+                      >
+                    </p>
+                  </div>
+                  <div class="flex space-x-[10px]">
+                    <div class="flex-shrink-0">
+                      <img
+                        src="assets/img/clock.png"
+                        alt=""
+                        class="w-10 h-10 flex-none"
+                      />
+                    </div>
+                    <p
+                      class="text-[#181F2E] text-[12px] leading-10 font-normal"
+                    >
+                      Also seen in subdomain in
+                      <a href="#" class="cursor-pointer font-bold"
+                        >skldjf.firecompass.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                
+              </div>
+              <div>
+                <a
+                  href="#"
+                  class="inline-block text-white leading-[13px] text-[11px] font-semibold py-2 px-4 rounded-[44px] bg-[#206DEF] hover:shadow"
+                >
+                  Show complete discovery path
+                </a>
+              </div>
+            </div>
+
+            <!-- comments part start  -->
+
+            <div
+              class="lg:w-1/4 md:w-1/2 w-full bg-white border border-solid border-white shadow-[0px 0px 41px rgba(0, 0, 0, 0.05)] p-[13px] rounded-[10px] flex flex-col justify-between"
+            >
+              <div class="flex justify-between pt-4">
+                <h2>Comments</h2>
+                <button
+                  class="bg-[#206DEF] rounded-[41px] px-4 py-1 text-white text-center leading-[11px] text-[10px] font-semibold not not-italic cursor-pointer"
+                >
+                  Add Comment
+                </button>
+              </div>
+
+              <!-- comments  -->
+              <div class="space-y-[17px] mt-[17px]">
+                <div>
+                  <div class="p-[10px] bg-[#F0F6FF] ]">
+                    <p
+                      class="text-[#525256] md:leading-[20px] md:text-[14px] text-[10px]  leading-[13px] font-normal font-lato"
+                    >
+                      Cum sociis natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Nulla vitae elit libero, a
+                      pharetra augue. Aenean lacinia bibendum nulla sed
+                    </p>
+                  </div>
+
+                  <p
+                    class="text-right mt-[14px] text-[#0E1D44] font-semibold font-lato leading-[13px] text-[12px] not-italic"
+                  >
+                    Arun Pattnaik
+                  </p>
+                </div>
+                <div>
+                  <div class="p-[10px] bg-[#F0F6FF]">
+                    <p
+                      class="text-[#525256] md:leading-[20px] md:text-[14px] leading-[13px] text-[10px] font-normal font-lato"
+                    >
+                      Cum sociis natoque penatibus emagnis dis parturient
+                      montes, nascetur ridiculus mus. Nulla vitae elibero, a
+                      pharetra augue. Aenean lacinia bibendum nulla sed consec.
+                    </p>
+                  </div>
+
+                  <p
+                    class="text-right mt-[14px] text-[#0E1D44] font-semibold font-lato leading-[13px] text-[12px] not-italic"
+                  >
+                    Jitendra Chauhan
+                  </p>
+                </div>
+                <div class="">
+                  <div class="p-[10px] bg-[#F0F6FF] ]">
+                    <p
+                      class="text-[#525256] md:leading-[20px] md:text-[14px] leading-[13px] text-[10px] font-normal font-lato"
+                    >
+                      Cum sociis natoque penatibus et magnis dis parturient
+                      montes.
+                    </p>
+                  </div>
+
+                  <p
+                    class="text-right mt-[14px] text-[#0E1D44] font-semibold font-lato leading-[13px] text-[12px] not-italic"
+                  >
+                    Priyanka Gautham
+                  </p>
+                </div>
+              </div>
+
+              <!-- bottom part comment  -->
+              <div
+                class="flex items-center justify-between border-t-2 pt-3 w-full  mt-5"
+              >
+                <a
+                  class="text-[#BFC7D1] leading-[17px] text-[14px] font-normal not-italic cursor-pointer hover:text-black transition"
+                  >View all 42 comments</a
+                >
+                <img
+                  src="assets/img/Vector.png"
+                  alt=""
+                  class="w-[7px] h-[13px]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- actions chat discovery part end  here  -->
+        </section>
+        <!--======== Dahsboard Area End =========-->
+      </div>
+    </main>
+    <!--======== Main Area End =========-->
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
